@@ -1,271 +1,263 @@
-import React, { useEffect, useState } from "react";
-
-/**
- * Portfolio – Uber-clean, professional, and self-contained React page.
- * - No external UI deps; Tailwind-only classes.
- * - Dark/Light toggle.
- * - Polished vertical timeline with media + press logos.
- * - Simple About section.
- * - Runtime self-tests (basic) to catch data issues.
- *
- * Drop assets into /assets/... and update paths below as needed.
- */
-
-export default function Portfolio() {
-  const [dark, setDark] = useState(true);
-  const [activeMedia, setActiveMedia] = useState(0);
-
-  // --- About Me carousel media (use your real files when ready) ---
-  const aboutMedia: { type: "image" | "video"; src: string; caption?: string }[] = [
-    { type: "video", src: "/assets/about me.mov", caption: "Intro" },
-    { type: "image", src: "/assets/about me r8.JPG", caption: "R8 moment" },
-    { type: "image", src: "/assets/about me (cars engine 2jz gte).JPG", caption: "2JZ wrenching" },
-    { type: "video", src: "/assets/about me atv.MOV", caption: "ATV fun" },
-    { type: "image", src: "/assets/about me dog.JPG", caption: "Life w/ dog" },
-    { type: "image", src: "/assets/about me (racing) (pizza being heated on open bonnet of m4 after drifting).HEIC", caption: "Drift day 🍕" },
-  ];
-
-  // --- Press logos for 2018 activism milestone ---
-  const PRESS_LOGOS = [
-    { logo: "/assets/logos/timesofindia.png", link: "https://timesofindia.indiatimes.com" },
-    { logo: "/assets/logos/indiatoday.png", link: "https://www.indiatoday.in" },
-    { logo: "/assets/logos/hindustantimes.png", link: "https://www.hindustantimes.com" },
-  ];
-
-  // --- Timeline data (years corrected per your last message) ---
-  type TLItem = {
-    year: number;
-    title: string;
-    description: string;
-    media?: string; // path to image or video
-    press?: { logo: string; link: string }[];
-  };
-
-  const timeline: TLItem[] = [
-    {
-      year: 2013,
-      title: "Early Engineering Curiosity",
-      description: "Began hands-on work with mechanical parts & tinkering in workshop.",
-    },
-    {
-      year: 2016,
-      title: "CAD Modeling Proficiency",
-      description: "Taught myself CAD and started creating functional 3D models.",
-      media: "/assets/3d printing (cad).jpg",
-    },
-    {
-      year: 2018,
-      title: "Climate Activism",
-      description:
-        "Co-organized Delhi NCR climate strikes; described air pollution as a ‘millennial cancer’. Coverage by national outlets.",
-      media: "/assets/aeromodelling.jpg", // replace with a protest photo if you have one
-      press: PRESS_LOGOS,
-    },
-    {
-      year: 2019,
-      title: "Aeromodelling Projects",
-      description: "Designed & built aeromodelling prototypes, merging climate awareness with engineering.",
-      media: "/assets/aeromodelling.jpg",
-    },
-    {
-      year: 2020,
-      title: "Workshop Innovation",
-      description: "Expanded independent projects (3D printing, small-scale mechanical builds).",
-      media: "/assets/a video of me in my workshop at 16!.mp4",
-    },
-    {
-      year: 2023,
-      title: "Coding & Motorsport",
-      description:
-        "Self-taught programming for automation & control. Autocross at Buddh International Circuit – 2nd place.",
-      media: "/assets/autocross.jpg",
-    },
-    {
-      year: 2024,
-      title: "Lexus GS300 (2JZ) Rebuild",
-      description: "Full engine & chassis refresh of a GS300 (2JZ). OEM+ drivability.",
-      media: "/assets/projects/gs300.jpg",
-    },
-    {
-      year: 2025,
-      title: "UNO MINDA Internship",
-      description:
-        "Product Integration & Market Analysis – bridging engineering with real-world business impact.",
-      media: "/assets/unominda.png",
-    },
-  ];
-
-  // --- Runtime self-tests (basic) ---
-  useEffect(() => {
-    // 1) Years should be ascending
-    const years = timeline.map((t) => t.year);
-    const sorted = [...years].sort((a, b) => a - b);
-    if (years.some((y, i) => y !== sorted[i])) {
-      // eslint-disable-next-line no-console
-      console.warn("Timeline years are not in ascending order:", years);
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aryadhar Gupta — Driver • Builder • Creator</title>
+  <meta name="description" content="Portfolio of Aryadhar Gupta — motorsport driver, builder, and creator. Showcasing racing, engineering projects, achievements, and contact." />
+  <meta name="theme-color" content="#0b1220" />
+  <meta property="og:title" content="Aryadhar Gupta — Driver • Builder • Creator" />
+  <meta property="og:description" content="Motorsport, engineering, and projects portfolio." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/og-cover.jpg" />
+  <link rel="icon" href="assets/favicon.ico" />
+  <style>
+    :root{
+      --bg:#0b1220;         /* background */
+      --bg-soft:#0f172a;    /* section cards */
+      --fg:#e6edf7;         /* text */
+      --muted:#9bb1ce;      /* secondary text */
+      --brand:#7dd3fc;      /* accent */
+      --brand-2:#22d3ee;    /* accent 2 */
+      --ok:#22c55e; --warn:#f59e0b; --err:#ef4444;
+      --card-radius:18px; --shadow:0 10px 30px rgba(0,0,0,.35);
+      --maxw:1150px;
     }
-    // 2) Required milestones present
-    const req = [2016, 2018, 2023, 2024, 2025];
-    const missing = req.filter((y) => !years.includes(y));
-    if (missing.length) {
-      // eslint-disable-next-line no-console
-      console.warn("Missing required milestones:", missing);
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+      color:var(--fg); background:radial-gradient(1000px 600px at 80% -10%, rgba(34,211,238,.15), transparent 60%),
+                       radial-gradient(800px 500px at 0% 0%, rgba(125,211,252,.12), transparent 60%), var(--bg);
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
     }
-  }, []);
-
-  // --- Helpers ---
-  const isVideo = (src?: string) => !!src && /(\.mp4|\.mov|\.heic|\.heif)$/i.test(src);
-
-  return (
-    <div className={dark ? "bg-[#0b1220] text-white" : "bg-white text-slate-900"}>
-      {/* Top Bar */}
-      <header className="sticky top-0 z-20 backdrop-blur bg-black/30 border-b border-white/10">
-        <div className="mx-auto max-w-[1150px] px-5 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2 font-semibold tracking-wide">
-            <span className="w-2.5 h-2.5 rounded-full bg-gradient-to-br from-cyan-300 to-cyan-400 shadow-[0_0_0_6px_rgba(34,211,238,0.18)]" />
-            Aryadhar Gupta
-          </div>
-          <button
-            onClick={() => setDark((d) => !d)}
-            className="px-3 py-1.5 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 transition"
-            aria-label="Toggle color mode"
-          >
-            {dark ? "Light Mode" : "Dark Mode"}
-          </button>
-        </div>
-      </header>
-
-      {/* Hero / Intro */}
-      <section className="pt-12 pb-6">
-        <div className="mx-auto max-w-[1150px] px-5 grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            <span className="inline-flex items-center gap-2 text-cyan-300/90 border border-cyan-300/30 bg-cyan-300/10 px-3 py-1 rounded-full text-sm font-semibold">
-              Driver • Builder • Creator
-            </span>
-            <h1 className="text-3xl md:text-5xl font-bold leading-tight mt-3">
-              I turn engineering and speed into stories.
-            </h1>
-            <p className="text-slate-300/90 mt-4 max-w-prose">
-              Delhi-based motorsport driver & engineer. Formula‑4 testing, instructor at <strong>BAD BOI DRIFTS</strong>,
-              intern at <strong>UNO Minda</strong> (Product Integration & Market Analysis), climate activist featured in
-              national media, and hands‑on builder — from <em>2JZ</em> restoration to connected hardware and control systems.
-              Mensa IQ 145–155.
-            </p>
-            <div className="flex flex-wrap gap-3 mt-5">
-              <a href="#timeline" className="px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-300 to-cyan-400 text-[#04121d] font-semibold">
-                View Timeline
-              </a>
-              <a href="#about" className="px-4 py-2 rounded-xl border border-white/15 bg-white/5 hover:bg-white/10 transition">
-                About Me
-              </a>
-            </div>
-          </div>
-
-          {/* About carousel */}
-          <div id="about" className="rounded-2xl border border-white/10 bg-white/5 p-2 shadow-xl">
-            <div className="relative aspect-video overflow-hidden rounded-xl">
-              {aboutMedia[activeMedia]?.type === "image" ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={aboutMedia[activeMedia].src}
-                  alt={aboutMedia[activeMedia].caption || "About media"}
-                  className="w-full h-full object-cover"
-                />
-              ) : (
-                <video
-                  src={aboutMedia[activeMedia].src}
-                  className="w-full h-full"
-                  controls
-                  playsInline
-                />
-              )}
-            </div>
-            <div className="flex items-center justify-between mt-3">
-              <div className="text-sm opacity-80">
-                {aboutMedia[activeMedia]?.caption}
-              </div>
-              <div className="flex items-center gap-2">
-                {aboutMedia.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setActiveMedia(i)}
-                    className={`w-2.5 h-2.5 rounded-full ${i === activeMedia ? "bg-cyan-300" : "bg-white/30"}`}
-                    aria-label={`Go to slide ${i + 1}`}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Timeline */}
-      <section id="timeline" className="py-10">
-        <div className="mx-auto max-w-[1150px] px-5">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6">Life & Impact Timeline</h2>
-          <div className="relative pl-6 md:pl-8">
-            {/* vertical line */}
-            <div className="absolute left-2 md:left-3 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-300/80 to-transparent" />
-
-            <ul className="space-y-6">
-              {timeline.map((item, idx) => (
-                <li key={item.year} className="relative">
-                  {/* node dot */}
-                  <span className="absolute -left-[7px] md:-left-[9px] top-2 w-3 h-3 md:w-3.5 md:h-3.5 rounded-full bg-cyan-300 shadow-[0_0_0_6px_rgba(34,211,238,0.18)]" />
-
-                  <div className="rounded-2xl border border-white/10 bg-white/5 p-4 md:p-5 shadow-lg">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-                      <div className="text-sm md:text-base font-semibold opacity-80">{item.year}</div>
-                      <h3 className="text-lg md:text-xl font-semibold">{item.title}</h3>
-                    </div>
-                    <p className="mt-2 opacity-90 leading-relaxed">{item.description}</p>
-
-                    {item.media && (
-                      <div className="mt-3 overflow-hidden rounded-xl border border-white/10">
-                        {isVideo(item.media) ? (
-                          <video src={item.media} controls className="w-full" />
-                        ) : (
-                          // eslint-disable-next-line @next/next/no-img-element
-                          <img src={item.media} alt={item.title} className="w-full object-cover" />
-                        )}
-                      </div>
-                    )}
-
-                    {item.press && (
-                      <div className="mt-3 flex flex-wrap items-center gap-4">
-                        {item.press.map((p) => (
-                          <a
-                            key={p.logo}
-                            href={p.link}
-                            target="_blank"
-                            rel="noreferrer noopener"
-                            className="inline-flex items-center gap-2 opacity-90 hover:opacity-100 transition"
-                            aria-label="Press link"
-                          >
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img src={p.logo} alt="Press logo" className="h-6 object-contain" />
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="border-t border-white/10">
-        <div className="mx-auto max-w-[1150px] px-5 py-8 text-sm opacity-80 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
-          <div>© {new Date().getFullYear()} Aryadhar Gupta</div>
-          <div className="space-x-4">
-            <a href="#about" className="hover:underline">About</a>
-            <a href="#timeline" className="hover:underline">Timeline</a>
-          </div>
-        </div>
-      </footer>
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
+    img{max-width:100%; height:auto; display:block}
+    .wrap{max-width:var(--maxw); margin-inline:auto; padding:0 20px}
+    /* Header */
+    .nav{position:sticky; top:0; z-index:100; backdrop-filter:saturate(1.2) blur(8px); background:rgba(11,18,32,.6); border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav .inner{display:flex; align-items:center; justify-content:space-between; height:64px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.3px}
+    .brand .dot{width:10px; height:10px; border-radius:999px; background:linear-gradient(45deg, var(--brand), var(--brand-2)); box-shadow:0 0 0 4px rgba(34,211,238,.15)}
+    .links{display:flex; gap:18px}
+    .links a{color:var(--fg); opacity:.85}
+    .links a.active,.links a:hover{opacity:1; color:var(--brand)}
+    /* Hero */
+    .hero{padding:72px 0 36px}
+    .hero .grid{display:grid; grid-template-columns:1.2fr .8fr; gap:30px; align-items:center}
+    .tag{display:inline-flex; align-items:center; gap:8px; background:rgba(125,211,252,.12); color:var(--brand); border:1px solid rgba(125,211,252,.25); padding:6px 10px; border-radius:999px; font-weight:600; font-size:.9rem}
+    .title{font-size:clamp(28px,5vw,48px); line-height:1.15; margin:.4rem 0 1rem}
+    .subtitle{max-width:60ch; color:var(--muted)}
+    .cta{display:flex; gap:12px; margin-top:20px; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); color:var(--fg); font-weight:600}
+    .btn.primary{border-color:transparent; background:linear-gradient(90deg, var(--brand), var(--brand-2)); color:#04121d}
+    .statbar{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:24px}
+    .stat{background:var(--bg-soft); border:1px solid rgba(255,255,255,.06); border-radius:14px; padding:14px; text-align:center}
+    .stat strong{display:block; font-size:1.3rem}
+    .hero .photo{border-radius:18px; overflow:hidden; box-shadow:var(--shadow); border:1px solid rgba(255,255,255,.08)}
+    /* Sections */
+    section{padding:56px 0}
+    h2{font-size:clamp(22px,3.5vw,32px); margin:0 0 18px}
+    .kicker{color:var(--muted); margin-bottom:28px}
+    .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    .card{background:var(--bg-soft); border:1px solid rgba(255,255,255,.06); border-radius:var(--card-radius); padding:18px; box-shadow:var(--shadow)}
+    .card h3{margin:0 0 8px; font-size:1.1rem}
+    .pill{display:inline-block; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.04); margin:4px 6px 0 0; font-size:.9rem}
+    /* Projects grid */
+    .projects{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    .proj{background:var(--bg-soft); border:1px solid rgba(255,255,255,.06); border-radius:16px; overflow:hidden; transition:transform .25s ease}
+    .proj:hover{transform:translateY(-3px)}
+    .proj img{aspect-ratio:16/9; object-fit:cover}
+    .proj .p{padding:14px}
+    .proj .p h3{margin:0 0 6px}
+    .proj .p p{margin:0; color:var(--muted)}
+    /* Timeline */
+    .timeline{position:relative; margin-left:12px}
+    .timeline::before{content:""; position:absolute; left:10px; top:0; bottom:0; width:2px; background:linear-gradient(var(--brand), transparent)}
+    .tl{position:relative; margin:0 0 18px 28px}
+    .tl::before{content:""; position:absolute; left:-28px; top:.35rem; width:12px; height:12px; border-radius:50%; background:var(--brand)}
+    .tl strong{display:block}
+    /* Gallery */
+    .gallery{display:grid; grid-template-columns:repeat(4,1fr); gap:10px}
+    .gallery a{border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,.08)}
+    /* Contact */
+    .contactbox{display:grid; grid-template-columns:1.1fr .9fr; gap:18px; align-items:center}
+    .contactbox .box{background:var(--bg-soft); border:1px solid rgba(255,255,255,.06); border-radius:16px; padding:18px}
+    .footer{padding:28px 0; border-top:1px solid rgba(255,255,255,.06); color:var(--muted)}
+    /* Responsive */
+    @media (max-width:1000px){.hero .grid{grid-template-columns:1fr}.projects,.cards{grid-template-columns:repeat(2,1fr)}.gallery{grid-template-columns:repeat(3,1fr)}.contactbox{grid-template-columns:1fr}}
+    @media (max-width:700px){.links{display:none}.projects,.cards{grid-template-columns:1fr}.gallery{grid-template-columns:repeat(2,1fr)} .statbar{grid-template-columns:repeat(2,1fr)}}
+  </style>
+</head>
+<body>
+  <!-- Nav -->
+  <header class="nav">
+    <div class="wrap inner">
+      <div class="brand"><span class="dot" aria-hidden="true"></span> Aryadhar Gupta</div>
+      <nav class="links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#projects">Projects</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
-  );
-}
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap grid">
+      <div>
+        <span class="tag" aria-label="roles">Driver • Builder • Creator</span>
+        <h1 class="title">I turn engineering and speed into stories.</h1>
+        <p class="subtitle">19‑year‑old motorsport driver from Delhi. Formula‑4 testing, instructor at <strong>BAD BOI DRIFTS</strong>, award‑winning robotics competitor, and hands‑on builder — from 2JZ engine restoration to connected hardware and control systems.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">Explore Projects</a>
+          <a class="btn" href="#contact">Work with Me</a>
+        </div>
+        <div class="statbar" role="list" aria-label="Quick stats">
+          <div class="stat" role="listitem"><strong>F4</strong> Testing & Coaching</div>
+          <div class="stat" role="listitem"><strong>3×</strong> World Robotics Olympiad (Intl.)</div>
+          <div class="stat" role="listitem"><strong>Mensa</strong> IQ 155–165</div>
+        </div>
+      </div>
+      <div>
+        <!-- Replace with a real portrait: assets/portrait.jpg -->
+        <img class="photo" src="assets/portrait.jpg" alt="Aryadhar in race gear" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- About / Skills / Services cards -->
+  <section id="about">
+    <div class="wrap">
+      <h2>About</h2>
+      <p class="kicker">Builder at heart. I’ve been making things since childhood — RC models, aero, karts, and robotics. Today I split time between racing, coaching, and engineering smart systems that control the physical world.</p>
+      <div class="cards" aria-label="Skill areas">
+        <article class="card" aria-labelledby="s1"><h3 id="s1">Motorsport</h3><p>Formula testing, drifting instruction, racecraft, telemetry‑driven improvement.</p><span class="pill">Formula 4</span><span class="pill">Drifting</span><span class="pill">Coaching</span></article>
+        <article class="card" aria-labelledby="s2"><h3 id="s2">Engineering</h3><p>Electronics + code + mechanics. Control systems, embedded (ESP/Teensy), web UIs.</p><span class="pill">ESP8266</span><span class="pill">NodeMCU</span><span class="pill">Teensy 4.1</span><span class="pill">C/C++ • JS</span></article>
+        <article class="card" aria-labelledby="s3"><h3 id="s3">Builds</h3><p>2JZ‑GE Lexus GS300 restoration (OEM‑plus) — all rubber, sensors, wear parts refreshed.</p><span class="pill">2JZ‑GE</span><span class="pill">GS300</span><span class="pill">OEM+ Restore</span></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements -->
+  <section id="achievements">
+    <div class="wrap">
+      <h2>Selected Achievements</h2>
+      <ul class="timeline" aria-label="timeline">
+        <li class="tl"><strong>3× World Robotics Olympiad — International Placements</strong><span class="kicker"> Since age 12</span></li>
+        <li class="tl"><strong>Top‑10 — Indian Robotics Olympiad</strong></li>
+        <li class="tl"><strong>F1 in Schools — International Placement</strong></li>
+        <li class="tl"><strong>Mensa Member</strong> — IQ 155–165</li>
+        <li class="tl"><strong>Instructor — BAD BOI DRIFTS</strong> — India’s private drift academy</li>
+        <li class="tl"><strong>Formula 4 Testing</strong> — Driver development & telemetry work</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="wrap">
+      <h2>Featured Projects</h2>
+      <p class="kicker">A mix of hardware, software, and speed.</p>
+      <div class="projects">
+        <article class="proj">
+          <a href="https://aryadharg-max.github.io/traffic-light-control/" target="_blank" rel="noopener">
+            <img src="assets/projects/traffic-light-ui.jpg" alt="Traffic light controller UI screenshot" loading="lazy" />
+          </a>
+          <div class="p">
+            <h3>NodeMCU Traffic Light Controller</h3>
+            <p>ESP8266 + AC 220V relays. Live audio‑reactive modes over Wi‑Fi with local web UI.</p>
+          </div>
+        </article>
+        <article class="proj">
+          <a href="#" aria-disabled="true">
+            <img src="assets/projects/gs300.jpg" alt="Lexus GS300 2JZ restoration" loading="lazy" />
+          </a>
+          <div class="p">
+            <h3>2JZ‑GE GS300 OEM+ Restoration</h3>
+            <p>Complete rubber, wear parts, and sensors overhaul; stock‑fresh drivability.</p>
+          </div>
+        </article>
+        <article class="proj">
+          <a href="#" aria-disabled="true">
+            <img src="assets/projects/telemetry.jpg" alt="On‑track telemetry data" loading="lazy" />
+          </a>
+          <div class="p">
+            <h3>Driver Development & Telemetry</h3>
+            <p>Data‑driven coaching and setup iteration from testing to drift sessions.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery (replace thumbnails with your photos) -->
+  <section id="gallery">
+    <div class="wrap">
+      <h2>Gallery</h2>
+      <p class="kicker">A few snapshots — racing, builds, and behind‑the‑scenes.</p>
+      <div class="gallery">
+        <a href="assets/gallery/1.jpg" target="_blank" rel="noopener"><img src="assets/gallery/1.jpg" alt="Racing photo 1" loading="lazy"></a>
+        <a href="assets/gallery/2.jpg" target="_blank" rel="noopener"><img src="assets/gallery/2.jpg" alt="Workshop photo" loading="lazy"></a>
+        <a href="assets/gallery/3.jpg" target="_blank" rel="noopener"><img src="assets/gallery/3.jpg" alt="Drift session" loading="lazy"></a>
+        <a href="assets/gallery/4.jpg" target="_blank" rel="noopener"><img src="assets/gallery/4.jpg" alt="Electronics project" loading="lazy"></a>
+        <a href="assets/gallery/5.jpg" target="_blank" rel="noopener"><img src="assets/gallery/5.jpg" alt="On track" loading="lazy"></a>
+        <a href="assets/gallery/6.jpg" target="_blank" rel="noopener"><img src="assets/gallery/6.jpg" alt="Car build detail" loading="lazy"></a>
+        <a href="assets/gallery/7.jpg" target="_blank" rel="noopener"><img src="assets/gallery/7.jpg" alt="Coaching" loading="lazy"></a>
+        <a href="assets/gallery/8.jpg" target="_blank" rel="noopener"><img src="assets/gallery/8.jpg" alt="RC models / aero" loading="lazy"></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="wrap contactbox">
+      <div class="box">
+        <h2>Contact</h2>
+        <p class="kicker">Open to racing opportunities, technical collaborations, and sponsorships.</p>
+        <p><strong>Email:</strong> <a href="mailto:aryadharg.max@gmail.com">aryadharg.max@gmail.com</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/aryadharg-max" target="_blank" rel="noopener">@aryadharg-max</a></p>
+        <p><strong>Drift Academy:</strong> BAD BOI DRIFTS — Instructor</p>
+      </div>
+      <div class="box">
+        <h3>Quick Note</h3>
+        <p>Want a deeper dive into my projects or to set up a session? Drop me a line with some context and your timeline. I’ll reply with a plan.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">© <span id="y"></span> Aryadhar Gupta — Built on GitHub Pages • <a href="#">Back to top</a></div>
+  </footer>
+
+  <script>
+    // minimal enhancements: current year, smooth scroll, active link highlight
+    document.getElementById('y').textContent = new Date().getFullYear();
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',e=>{const id=a.getAttribute('href').slice(1);const el=document.getElementById(id);if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth',block:'start'});}})
+    });
+    const obs=new IntersectionObserver(entries=>{
+      entries.forEach(en=>{if(en.isIntersecting){document.querySelectorAll('.links a').forEach(l=>l.classList.remove('active'));const link=document.querySelector(`.links a[href="#${en.target.id}"]`); if(link) link.classList.add('active');}});
+    },{rootMargin:'-40% 0px -55% 0px'});
+    ['about','achievements','projects','gallery','contact'].forEach(id=>{const el=document.getElementById(id); if(el) obs.observe(el);});
+  </script>
+
+  <!-- Structured data for richer search previews -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Aryadhar Gupta",
+    "url": "https://aryadharg-max.github.io/",
+    "jobTitle": "Motorsport Driver / Engineer",
+    "sameAs": [
+      "https://github.com/aryadharg-max"
+    ],
+    "description":"Motorsport driver, builder, and creator — Formula testing, drifting instruction, robotics awards, and engineering projects (ESP/Teensy, control systems)."
+  }
+  </script>
+</body>
+</html>
