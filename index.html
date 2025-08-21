@@ -1,421 +1,322 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Aryadhar Gupta — Driver • Builder • Creator</title>
-  <meta name="description" content="Portfolio of Aryadhar Gupta — motorsport, engineering, CAD, and climate activism. Projects, achievements, and contact." />
+  <meta name="description" content="Portfolio of Aryadhar Gupta — motorsport, engineering, CAD, aeromodelling, climate activism." />
   <meta name="theme-color" content="#0b1220" />
-  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="icon" href="assets/images/about-me-r8.JPG" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root{
-      --bg:#0b1220; --bg-soft:#0f172a; --fg:#e6edf7; --muted:#9bb1ce;
-      --brand:#7dd3fc; --brand-2:#22d3ee; --maxw:1180px;
-      --radius:16px; --shade:0 10px 30px rgba(0,0,0,.35);
+      --bg:#0b1220; --panel:#0f172a; --fg:#e6edf7; --muted:#9bb1ce; --brand:#7dd3fc;
+      --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.35); --maxw:1150px;
     }
-    html,body{background:var(--bg); color:var(--fg)}
-    .maxw{max-width:var(--maxw)}
-    .shade{box-shadow:var(--shade)}
-    .card{background:var(--bg-soft); border:1px solid rgba(255,255,255,.07); border-radius:var(--radius)}
-    .chip{border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.04); padding:.25rem .55rem; border-radius:999px}
-    .btn{display:inline-flex; align-items:center; gap:.5rem; border:1px solid rgba(255,255,255,.15); border-radius:12px; padding:.55rem .9rem; background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02))}
-    .btn-primary{border-color:transparent; background:linear-gradient(90deg, var(--brand), var(--brand-2)); color:#04121d; font-weight:700}
-    .link-press{display:inline-flex; align-items:center; gap:.5rem; color:var(--fg); text-decoration:underline; text-underline-offset:3px}
-    .nav-blur{backdrop-filter:saturate(1.2) blur(8px); background:rgba(11,18,32,.65); border-bottom:1px solid rgba(255,255,255,.08)}
-    .section-title{font-size:clamp(22px,3.2vw,32px)}
+    html,body{height:100%}
+    body{margin:0;background:radial-gradient(900px 600px at 80% -10%, rgba(34,211,238,.10), transparent 60%), var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased}
+    a{color:var(--brand)}
+    .wrap{max-width:var(--maxw);margin-inline:auto;padding:0 20px}
+    .card{background:var(--panel);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius);box-shadow:var(--shadow)}
+    /* Header */
+    .nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.2) blur(8px);background:rgba(11,18,32,.6);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav a{opacity:.9} .nav a:hover{opacity:1}
     /* Carousel */
-    .slide{display:none}
-    .slide.active{display:block}
+    .slide{display:none} .slide.active{display:block}
     /* Smooth scroll */
     html{scroll-behavior:smooth}
+    /* Simple expand */
+    details summary{cursor:pointer;list-style:none}
+    details summary::-webkit-details-marker{display:none}
   </style>
 </head>
 <body>
 
-  <!-- ===== Header / Nav ===== -->
-  <header class="nav-blur sticky top-0 z-50">
-    <div class="maxw mx-auto px-4 h-16 flex items-center justify-between">
-      <div class="flex items-center gap-2 font-bold">
-        <span class="inline-block w-2.5 h-2.5 rounded-full" style="background:linear-gradient(45deg,var(--brand),var(--brand-2)); box-shadow:0 0 0 6px rgba(34,211,238,.18)"></span>
-        Aryadhar Gupta
-      </div>
-      <nav class="hidden md:flex items-center gap-5 text-sm">
-        <a href="#about" class="hover:underline">About</a>
-        <a href="#skills" class="hover:underline">Skills</a>
-        <a href="#projects" class="hover:underline">Projects</a>
-        <a href="#activism" class="hover:underline">Activism</a>
-        <a href="#timeline" class="hover:underline">Timeline</a>
-        <a href="#contact" class="hover:underline">Contact</a>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="wrap flex items-center justify-between h-16">
+      <div class="flex items-center gap-2 font-bold">Aryadhar Gupta</div>
+      <nav class="hidden sm:flex gap-6 text-sm">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#activism">Activism</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
-  <!-- ===== Hero ===== -->
-  <section class="maxw mx-auto px-4 py-12">
-    <div class="grid md:grid-cols-2 gap-8 items-center">
+  <!-- HERO -->
+  <section class="wrap py-12">
+    <div class="grid md:grid-cols-2 gap-6 items-center">
       <div>
-        <span class="inline-flex items-center gap-2 chip text-cyan-200">Driver • Builder • Creator</span>
-        <h1 class="mt-4 text-4xl font-extrabold leading-tight">I turn engineering and speed into stories.</h1>
-        <p class="mt-3 text-slate-300">
-          Delhi-based motorsport driver & engineer. Formula-4 testing, instructor at <b>BAD BOI DRIFTS</b>,
-          intern at <b>UNO Minda</b> (Product Integration & Market Analysis), and climate activist covered by national media.
-          Hands-on builder—from 2JZ restoration to connected hardware and control systems. Mensa IQ 145–155.
+        <span class="inline-flex items-center gap-2 text-cyan-300 bg-white/5 border border-white/10 px-3 py-1 rounded-full text-sm">Driver • Builder • Creator</span>
+        <h1 class="text-4xl font-bold mt-3">I turn engineering and speed into stories.</h1>
+        <p class="text-lg text-[color:var(--muted)] mt-3">
+          Delhi-based motorsport driver & engineer. Formula-4 testing, instructor at BAD BOI DRIFTS,
+          intern at <strong>UNO Minda</strong> (Product Integration & Market Analysis), climate activist covered by national media,
+          and hands-on builder — from 2JZ restoration to connected hardware and control systems. Mensa IQ 145–155.
         </p>
-        <div class="mt-5 flex flex-wrap gap-3">
-          <a class="btn btn-primary" href="#projects">Explore Projects</a>
-          <a class="btn" href="#contact">Work with Me</a>
+        <div class="mt-5 flex gap-3">
+          <a href="#projects" class="px-4 py-2 rounded-lg bg-cyan-300 text-black font-semibold">See Projects</a>
+          <a href="#contact" class="px-4 py-2 rounded-lg border border-white/15">Contact Me</a>
         </div>
       </div>
-      <div class="card p-2 shade">
-        <img src="assets/placeholders/portrait.jpg" alt="Aryadhar — portrait" class="rounded-[14px]">
+      <figure class="card overflow-hidden">
+        <!-- Poster image -->
+        <img src="assets/images/about-me-r8.JPG" alt="R8 moment" class="w-full object-cover" />
+      </figure>
+    </div>
+  </section>
+
+  <!-- ABOUT (Auto Carousel) -->
+  <section id="about" class="wrap py-8">
+    <h2 class="text-2xl font-bold mb-4">About Me</h2>
+    <div id="aboutCarousel" class="card p-0 overflow-hidden">
+      <!-- Slides -->
+      <div class="slide active">
+        <img src="assets/images/about-me-r8.JPG" alt="R8 moment" class="w-full object-cover">
+        <figcaption class="p-3 text-sm text-[color:var(--muted)]">Audi R8 moment — the speed bug never left.</figcaption>
+      </div>
+      <div class="slide">
+        <img src="assets/images/about-me-dog.JPG" alt="Dog" class="w-full object-cover">
+        <figcaption class="p-3 text-sm text-[color:var(--muted)]">Life with my dog — balance, patience, and joy.</figcaption>
+      </div>
+      <div class="slide">
+        <img src="assets/images/about-me-%28cars-engine-2jz-gte%29.JPG" alt="2JZ engine work" class="w-full object-cover">
+        <figcaption class="p-3 text-sm text-[color:var(--muted)]">Hands-on with 2JZ — reliability and OEM+ feel.</figcaption>
+      </div>
+      <div class="slide">
+        <video controls preload="metadata" class="w-full">
+          <source src="assets/videos/about-me.mov" type="video/mp4">
+        </video>
+        <figcaption class="p-3 text-sm text-[color:var(--muted)]">Short intro — workshop and racing.</figcaption>
+      </div>
+      <div class="slide">
+        <video controls preload="metadata" class="w-full">
+          <source src="assets/videos/about-me-atv.MOV" type="video/mp4">
+        </video>
+        <figcaption class="p-3 text-sm text-[color:var(--muted)]">ATV adventures — control on any surface.</figcaption>
+      </div>
+      <div class="slide">
+        <img src="assets/images/aeromodelling.jpg" alt="Aeromodelling" class="w-full object-cover">
+        <figcaption class="p-3 text-sm text-[color:var(--muted)]">Aeromodelling — flight dynamics + discipline.</figcaption>
       </div>
     </div>
   </section>
 
-  <!-- ===== About (auto carousel) ===== -->
-  <section id="about" class="maxw mx-auto px-4 py-10">
-    <h2 class="section-title font-semibold mb-4">About Me</h2>
-    <p class="text-slate-300 max-w-3xl">
-      Builder at heart since childhood—RC models, aero, karts, and robotics. Today I split time between racing/coaching and
-      engineering smart systems that control the physical world. Strong CAD proficiency (since 2016), self-taught coding (since 2023),
-      and a record of impact—from climate advocacy to podiums at the track.
-    </p>
-
-    <!-- Carousel -->
-    <div id="aboutCarousel" class="relative mt-6 card p-2 shade overflow-hidden">
-      <div class="slide active"><img src="assets/about/about-me-r8.jpg" alt="R8 moment" class="w-full rounded-[12px]"></div>
-      <div class="slide"><video src="assets/about/about-me.mov" controls class="w-full rounded-[12px]"></video></div>
-      <div class="slide"><img src="assets/about/about-me-dog.jpg" alt="Life with my dog" class="w-full rounded-[12px]"></div>
-      <div class="slide"><video src="assets/about/about-me-atv.mov" controls class="w-full rounded-[12px]"></video></div>
-      <div class="slide"><img src="assets/about/about-me-2jz.jpg" alt="2JZ wrenching" class="w-full rounded-[12px]"></div>
-      <div class="slide"><img src="assets/about/about-me-drift-pizza.jpg" alt="Drift day pizza" class="w-full rounded-[12px]"></div>
-
-      <!-- dots -->
-      <div class="absolute bottom-3 left-0 right-0 flex justify-center gap-2">
-        <button class="dot w-2.5 h-2.5 rounded-full bg-cyan-300" aria-label="Slide 1"></button>
-        <button class="dot w-2.5 h-2.5 rounded-full bg-white/40" aria-label="Slide 2"></button>
-        <button class="dot w-2.5 h-2.5 rounded-full bg-white/40" aria-label="Slide 3"></button>
-        <button class="dot w-2.5 h-2.5 rounded-full bg-white/40" aria-label="Slide 4"></button>
-        <button class="dot w-2.5 h-2.5 rounded-full bg-white/40" aria-label="Slide 5"></button>
-        <button class="dot w-2.5 h-2.5 rounded-full bg-white/40" aria-label="Slide 6"></button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Skills (expandable examples) ===== -->
-  <section id="skills" class="maxw mx-auto px-4 py-10">
-    <h2 class="section-title font-semibold mb-6">Skills & Examples</h2>
+  <!-- SKILLS (Expandable with examples) -->
+  <section id="skills" class="wrap py-10">
+    <h2 class="text-2xl font-bold mb-6">Skills & Examples</h2>
 
     <!-- CAD -->
-    <div class="card p-5 mb-5">
-      <div class="flex items-start justify-between gap-4">
-        <div>
-          <h3 class="text-lg font-semibold">CAD Proficiency</h3>
-          <p class="text-slate-300 mt-1">
-            Self-taught since 2016. Fusion 360 / SolidWorks for parts, assemblies, and fixtures. Applied across aeromodelling,
-            suspension linkages, housings, and rapid prototyping (3D printing).
-          </p>
-          <div class="mt-2 flex flex-wrap gap-2 text-xs">
-            <span class="chip">Fusion 360</span><span class="chip">SolidWorks</span><span class="chip">3D Printing</span>
-          </div>
-        </div>
-        <button class="btn" onclick="toggleExamples('ex-cad')">See examples</button>
+    <details class="card p-5 mb-4" open>
+      <summary class="font-semibold text-lg">CAD Modelling & Rapid Prototyping</summary>
+      <p class="mt-2 text-[color:var(--muted)]">
+        Self-taught in 2016. From parametric parts to assemblies for real-world loads.
+        Tight loop: sketch → simulate → print → test.
+      </p>
+      <div class="grid sm:grid-cols-2 gap-4 mt-4">
+        <figure class="bg-white/5 border border-white/10 rounded-lg overflow-hidden">
+          <img src="assets/images/3d-orinting-%28cad%29.jpg" alt="3D printing CAD" class="w-full object-cover">
+          <figcaption class="p-3 text-sm text-[color:var(--muted)]">CAD → print: drivetrain mockups.</figcaption>
+        </figure>
+        <figure class="bg-white/5 border border-white/10 rounded-lg overflow-hidden">
+          <img src="assets/images/3d-printing-%28cad%29-pt2.jpg" alt="3D printing CAD pt2" class="w-full object-cover">
+          <figcaption class="p-3 text-sm text-[color:var(--muted)]">Suspension geometry & fitment tests.</figcaption>
+        </figure>
       </div>
-      <div id="ex-cad" class="hidden mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <article class="card p-4">
-          <img src="assets/placeholders/cad-gearbox.jpg" alt="CAD Gearbox" class="rounded shade">
-          <h4 class="font-semibold mt-3">3D Printed Gearbox</h4>
-          <p class="text-slate-300 text-sm">Parametric gearbox housing for RC powertrain; toleranced for PLA.</p>
-        </article>
-        <article class="card p-4">
-          <img src="assets/placeholders/cad-suspension.jpg" alt="Suspension Model" class="rounded shade">
-          <h4 class="font-semibold mt-3">Suspension Geometry</h4>
-          <p class="text-slate-300 text-sm">Double wishbone mockup for kinematics & packaging studies.</p>
-        </article>
-        <article class="card p-4">
-          <img src="assets/placeholders/cad-bracket.jpg" alt="Mount Bracket" class="rounded shade">
-          <h4 class="font-semibold mt-3">Electronics Bracket</h4>
-          <p class="text-slate-300 text-sm">Printed bracket & wire-management for embedded project enclosure.</p>
-        </article>
-      </div>
-    </div>
+    </details>
 
     <!-- Coding -->
-    <div class="card p-5 mb-5">
-      <div class="flex items-start justify-between gap-4">
-        <div>
-          <h3 class="text-lg font-semibold">Coding & Automation</h3>
-          <p class="text-slate-300 mt-1">
-            Since 2023, building UI + firmware + control loops for physical devices. Comfortable across Arduino/ESP,
-            basic Python automations, and modern web UIs.
-          </p>
-          <div class="mt-2 flex flex-wrap gap-2 text-xs">
-            <span class="chip">ESP8266</span><span class="chip">Arduino</span><span class="chip">Python</span><span class="chip">Web UI</span>
-          </div>
-        </div>
-        <button class="btn" onclick="toggleExamples('ex-code')">See examples</button>
-      </div>
-      <div id="ex-code" class="hidden mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <article class="card p-4">
-          <img src="assets/placeholders/traffic-ui.jpg" alt="Traffic Controller UI" class="rounded shade">
-          <h4 class="font-semibold mt-3">Traffic Light Controller</h4>
-          <p class="text-slate-300 text-sm">ESP8266 + AC relays; audio-reactive modes; local web UI for control.</p>
-        </article>
-        <article class="card p-4">
-          <img src="assets/placeholders/python-sensors.jpg" alt="Workshop sensors" class="rounded shade">
-          <h4 class="font-semibold mt-3">Workshop Sensors</h4>
-          <p class="text-slate-300 text-sm">Python polling & basic dashboards for temp/voltage monitoring.</p>
-        </article>
-        <article class="card p-4">
-          <img src="assets/placeholders/ui-portfolio.jpg" alt="Portfolio UI" class="rounded shade">
-          <h4 class="font-semibold mt-3">Portfolio UI</h4>
-          <p class="text-slate-300 text-sm">Lightweight, accessible web pages for projects and profile.</p>
-        </article>
-      </div>
-    </div>
-
-    <!-- Aeromodelling -->
-    <div class="card p-5 mb-5">
-      <div class="flex items-start justify-between gap-4">
-        <div>
-          <h3 class="text-lg font-semibold">Aeromodelling & Prototyping</h3>
-          <p class="text-slate-300 mt-1">
-            Designing & building airframes since 2019—balancing weight, stiffness, and aero; integrating control surfaces
-            and power systems; testing in the field.
-          </p>
-          <div class="mt-2 flex flex-wrap gap-2 text-xs">
-            <span class="chip">Structures</span><span class="chip">Control Surfaces</span><span class="chip">Powertrain</span>
-          </div>
-        </div>
-        <button class="btn" onclick="toggleExamples('ex-aero')">See examples</button>
-      </div>
-      <div id="ex-aero" class="hidden mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <article class="card p-4">
-          <img src="assets/aeromodelling.jpg" alt="RC Prototype" class="rounded shade">
-          <h4 class="font-semibold mt-3">RC Aircraft Prototype</h4>
-          <p class="text-slate-300 text-sm">Composite-reinforced wing, tuned CG, and repeatable launches.</p>
-        </article>
-        <article class="card p-4">
-          <img src="assets/placeholders/windtunnel.jpg" alt="Scale model" class="rounded shade">
-          <h4 class="font-semibold mt-3">Scale Aero Model</h4>
-          <p class="text-slate-300 text-sm">Section comparisons, flap/aileron sensitivity exploration.</p>
-        </article>
-      </div>
-    </div>
-
-    <!-- Motorsport -->
-    <div class="card p-5">
-      <div class="flex items-start justify-between gap-4">
-        <div>
-          <h3 class="text-lg font-semibold">Motorsport & Driver Development</h3>
-          <p class="text-slate-300 mt-1">
-            Formula-4 testing, drift instruction, and autocross competition. Data-driven improvements with telemetry,
-            video review, and setup iteration.
-          </p>
-          <div class="mt-2 flex flex-wrap gap-2 text-xs">
-            <span class="chip">F4 Testing</span><span class="chip">Drifting</span><span class="chip">Autocross 2nd @ BIC</span>
-          </div>
-        </div>
-        <button class="btn" onclick="toggleExamples('ex-moto')">See examples</button>
-      </div>
-      <div id="ex-moto" class="hidden mt-4 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <article class="card p-4">
-          <img src="assets/autocross.jpg" alt="Autocross" class="rounded shade">
-          <h4 class="font-semibold mt-3">Autocross @ BIC — 2nd</h4>
-          <p class="text-slate-300 text-sm">Course walk, tire prep, clean runs; focused on precision & exit speeds.</p>
-        </article>
-        <article class="card p-4">
-          <img src="assets/placeholders/drift.jpg" alt="Drifting" class="rounded shade">
-          <h4 class="font-semibold mt-3">Drift Instruction</h4>
-          <p class="text-slate-300 text-sm">BAD BOI DRIFTS—car control theory, weight transfer, and throttle steering.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== Projects ===== -->
-  <section id="projects" class="maxw mx-auto px-4 py-12">
-    <h2 class="section-title font-semibold mb-6">Projects</h2>
-    <div class="grid md:grid-cols-3 gap-5">
-      <!-- NodeMCU -->
-      <article class="card p-4">
-        <img src="assets/placeholders/traffic-ui.jpg" alt="Traffic light controller UI" class="rounded shade">
-        <h3 class="font-semibold mt-3">NodeMCU Traffic Light Controller</h3>
-        <p class="text-slate-300 text-sm mt-1">ESP8266 + AC 220V relays. Web UI & audio-reactive modes.</p>
-        <div class="mt-2 flex gap-2 text-xs">
-          <span class="chip">ESP8266</span><span class="chip">IoT</span><span class="chip">AC Relays</span>
-        </div>
-        <div class="mt-3 flex flex-wrap gap-2">
-          <a class="btn btn-primary" href="https://aryadharg-max.github.io/traffic-light-control/" target="_blank" rel="noopener">Live Demo</a>
-          <a class="btn" href="https://github.com/aryadharg-max/traffic-light-control" target="_blank" rel="noopener">GitHub Repo</a>
-        </div>
-      </article>
-
-      <!-- Lexus 2JZ -->
-      <article class="card p-4">
-        <img src="assets/projects/gs300.jpg" alt="Lexus GS300 2JZ rebuild" class="rounded shade">
-        <h3 class="font-semibold mt-3">Lexus GS300 — 2JZ OEM+ Rebuild</h3>
-        <p class="text-slate-300 text-sm mt-1">Complete refresh of wear items, sensors, lines; stock-fresh drivability.</p>
-        <div class="mt-2 flex gap-2 text-xs">
-          <span class="chip">2JZ-GE</span><span class="chip">OEM+</span><span class="chip">Reliability</span>
-        </div>
-      </article>
-
-      <!-- UNO Minda -->
-      <article class="card p-4">
-        <img src="assets/unominda.png" alt="UNO Minda" class="rounded shade bg-white p-4">
-        <h3 class="font-semibold mt-3">UNO Minda — Intern</h3>
-        <p class="text-slate-300 text-sm mt-1">Product Integration & Market Analysis (2025). Bridging engineering with business.</p>
-        <div class="mt-2 flex gap-2 text-xs">
-          <span class="chip">Product</span><span class="chip">Analysis</span><span class="chip">Integration</span>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- ===== Activism & Media (with your exact links) ===== -->
-  <section id="activism" class="maxw mx-auto px-4 py-12">
-    <h2 class="section-title font-semibold mb-6">Activism & Media</h2>
-    <div class="grid md:grid-cols-2 gap-5">
-      <div class="card p-5">
-        <h3 class="font-semibold">Climate Activism</h3>
-        <p class="text-slate-300 mt-1">
-          Youth climate strikes in Delhi-NCR since 2018 (age 13). Called air pollution a “millennial cancer”
-          to push for urgent, sustainable policy. Associated with youth-led movements.
-        </p>
-        <div class="mt-4 space-y-2 text-sm">
-          <a class="link-press" target="_blank" rel="noopener" href="https://www.indiatoday.in/mail-today/story/students-in-delhi-ncr-join-climate-change-stir-1479304-2019-03-16">
-            India Today — Students in Delhi NCR join climate change stir (Mar 16, 2019)
-          </a><br/>
-          <a class="link-press" target="_blank" rel="noopener" href="https://timesofindia.indiatimes.com/city/gurgaon/hundreds-of-ncr-school-students-join-global-protest-to-halt-climate-breakdown/articleshow/68434003.cms">
-            Times of India — Hundreds of NCR school students join global protest (Mar 16, 2019)
-          </a><br/>
-          <a class="link-press" target="_blank" rel="noopener" href="https://www.hindustantimes.com/gurgaon/mar-13-500-students-to-protest-inaction-on-climate-crisis-/story-5VY5elJRzTJV4VOuAwm6CP.html">
-            Hindustan Times — 500 students to protest inaction on climate crisis (Mar 13, 2019)
+    <details class="card p-5 mb-4">
+      <summary class="font-semibold text-lg">Coding, Control & Embedded</summary>
+      <p class="mt-2 text-[color:var(--muted)]">
+        Since 2023: JS for web UIs, Arduino/C for embedded, Python for tooling. Built control logic for hardware and
+        small interfaces for testing.
+      </p>
+      <div class="grid sm:grid-cols-2 gap-4 mt-4">
+        <div class="bg-white/5 border border-white/10 rounded-lg p-4">
+          <h4 class="font-semibold">Traffic Light Controller (NodeMCU)</h4>
+          <p class="text-sm text-[color:var(--muted)] mt-1">ESP8266 + AC relays + local web UI.</p>
+          <a class="inline-block mt-3 px-3 py-1 rounded bg-cyan-300 text-black font-semibold"
+             href="https://github.com/aryadharg-max/traffic-light-control" target="_blank" rel="noopener">
+            GitHub Repo
           </a>
         </div>
-      </div>
-      <div class="card p-5">
-        <h3 class="font-semibold">Reputation & Press</h3>
-        <p class="text-slate-300 mt-1">Engineering credibility + youth leadership. National media coverage across major outlets.</p>
-        <div class="mt-4 flex items-center gap-4 opacity-90">
-          <a href="https://timesofindia.indiatimes.com/" target="_blank" rel="noopener"><img src="assets/logos/timesofindia.png" alt="TOI" class="h-9"></a>
-          <a href="https://www.indiatoday.in/" target="_blank" rel="noopener"><img src="assets/logos/indiatoday.png" alt="India Today" class="h-9"></a>
-          <a href="https://www.hindustantimes.com/" target="_blank" rel="noopener"><img src="assets/logos/hindustantimes.png" alt="Hindustan Times" class="h-9"></a>
+        <div class="bg-white/5 border border-white/10 rounded-lg p-4">
+          <h4 class="font-semibold">Workshop Telemetry (Prototype)</h4>
+          <p class="text-sm text-[color:var(--muted)] mt-1">Sensor readings to a web dashboard (prototype).</p>
         </div>
       </div>
-    </div>
+    </details>
+
+    <!-- Aeromodelling -->
+    <details class="card p-5 mb-4">
+      <summary class="font-semibold text-lg">Aeromodelling & Flight Dynamics</summary>
+      <p class="mt-2 text-[color:var(--muted)]">
+        Building/repairing airframes; balancing weight, thrust, and control response. Emphasis on reliability and repeatability.
+      </p>
+      <div class="grid sm:grid-cols-2 gap-4 mt-4">
+        <figure class="bg-white/5 border border-white/10 rounded-lg overflow-hidden">
+          <img src="assets/images/aeromodelling.jpg" alt="Aeromodelling" class="w-full object-cover">
+          <figcaption class="p-3 text-sm text-[color:var(--muted)]">RC aircraft prototype assembly.</figcaption>
+        </figure>
+        <figure class="bg-white/5 border border-white/10 rounded-lg overflow-hidden">
+          <img src="assets/images/formula-4.jpg" alt="Formula 4 (illustrative)" class="w-full object-cover">
+          <figcaption class="p-3 text-sm text-[color:var(--muted)]">Discipline from track → sky.</figcaption>
+        </figure>
+      </div>
+    </details>
+
+    <!-- Motorsport -->
+    <details class="card p-5 mb-4">
+      <summary class="font-semibold text-lg">Motorsport: Driving, Data & Coaching</summary>
+      <p class="mt-2 text-[color:var(--muted)]">
+        Formula-4 testing, drift instruction (BAD BOI DRIFTS), and autocross. Data-driven improvement and setup iteration.
+      </p>
+      <div class="grid sm:grid-cols-2 gap-4 mt-4">
+        <figure class="bg-white/5 border border-white/10 rounded-lg overflow-hidden">
+          <img src="assets/images/racing-ritz-autocross-at-budh.JPG" alt="Autocross BIC" class="w-full object-cover">
+          <figcaption class="p-3 text-sm text-[color:var(--muted)]">Autocross — Buddh International Circuit (2nd place, 2023).</figcaption>
+        </figure>
+        <figure class="bg-white/5 border border-white/10 rounded-lg overflow-hidden">
+          <video controls preload="metadata" class="w-full">
+            <source src="assets/videos/drifting-%28badboidrfits%29.MOV" type="video/mp4">
+          </video>
+          <figcaption class="p-3 text-sm text-[color:var(--muted)]">Drift day — car control & instruction.</figcaption>
+        </figure>
+      </div>
+    </details>
   </section>
 
-  <!-- ===== Timeline (collapsible) ===== -->
-  <section id="timeline" class="maxw mx-auto px-4 py-12">
-    <h2 class="section-title font-semibold mb-6">Life & Impact Timeline</h2>
-    <div class="space-y-4">
-      <details class="card p-4"><summary class="cursor-pointer font-semibold">2013 — Early Engineering Curiosity</summary>
-        <p class="mt-2 text-slate-300">Reverse-engineering, workshop tinkering, and making—foundation for everything after.</p>
-      </details>
-
-      <details class="card p-4"><summary class="cursor-pointer font-semibold">2016 — CAD Modeling Proficiency</summary>
-        <p class="mt-2 text-slate-300">Self-taught CAD; from brackets and housings to assemblies and fixtures.</p>
-        <img src="assets/3d-printing-cad.jpg" alt="CAD model" class="mt-3 rounded shade max-w-md">
-      </details>
-
-      <details class="card p-4"><summary class="cursor-pointer font-semibold">2018 — Climate Activism</summary>
-        <p class="mt-2 text-slate-300">Co-organized youth climate strikes; publicly called pollution a “millennial cancer”.</p>
-        <div class="mt-3 flex flex-wrap gap-3">
-          <a class="link-press" target="_blank" rel="noopener" href="https://www.indiatoday.in/mail-today/story/students-in-delhi-ncr-join-climate-change-stir-1479304-2019-03-16">India Today</a>
-          <a class="link-press" target="_blank" rel="noopener" href="https://timesofindia.indiatimes.com/city/gurgaon/hundreds-of-ncr-school-students-join-global-protest-to-halt-climate-breakdown/articleshow/68434003.cms">Times of India</a>
-          <a class="link-press" target="_blank" rel="noopener" href="https://www.hindustantimes.com/gurgaon/mar-13-500-students-to-protest-inaction-on-climate-crisis-/story-5VY5elJRzTJV4VOuAwm6CP.html">Hindustan Times</a>
+  <!-- PROJECTS -->
+  <section id="projects" class="wrap py-10">
+    <h2 class="text-2xl font-bold mb-6">Projects</h2>
+    <div class="grid md:grid-cols-3 gap-4">
+      <!-- Lexus -->
+      <article class="card overflow-hidden">
+        <img src="assets/images/lexus-gs-300.HEIC" alt="Lexus GS300" class="w-full object-cover">
+        <div class="p-4">
+          <h3 class="font-semibold">Lexus GS300 — 2JZ OEM+ Rebuild</h3>
+          <p class="text-sm text-[color:var(--muted)] mt-1">Rubber, sensors, and wear items refreshed; stock-fresh drivability.</p>
+          <video controls preload="metadata" class="w-full mt-3">
+            <source src="assets/videos/lexus-gs300-straight-pipe-process.mp4" type="video/mp4">
+          </video>
         </div>
-      </details>
+      </article>
 
-      <details class="card p-4"><summary class="cursor-pointer font-semibold">2019 — Aeromodelling Projects</summary>
-        <p class="mt-2 text-slate-300">Airframes and prototypes; powertrain integration and CG tuning.</p>
-        <img src="assets/aeromodelling.jpg" alt="Aeromodelling" class="mt-3 rounded shade max-w-md">
-      </details>
+      <!-- NodeMCU Traffic Light -->
+      <article class="card overflow-hidden">
+        <img src="assets/images/formula-4.jpg" alt="Traffic Light UI (illustrative)" class="w-full object-cover">
+        <div class="p-4">
+          <h3 class="font-semibold">NodeMCU Traffic Light Controller</h3>
+          <p class="text-sm text-[color:var(--muted)] mt-1">ESP8266 + AC 220V relays. Local web UI & audio-reactive modes.</p>
+          <a class="inline-block mt-3 px-3 py-1 rounded bg-cyan-300 text-black font-semibold"
+             href="https://github.com/aryadharg-max/traffic-light-control" target="_blank" rel="noopener">
+            GitHub Repo
+          </a>
+        </div>
+      </article>
 
-      <details class="card p-4"><summary class="cursor-pointer font-semibold">2020 — Workshop Innovation</summary>
-        <p class="mt-2 text-slate-300">Expanded 3D printing, small-scale mechatronics; process discipline.</p>
-        <video src="assets/workshop-16.mp4" controls class="mt-3 rounded shade max-w-md"></video>
-      </details>
+      <!-- Shop / Kart / Drift -->
+      <article class="card overflow-hidden">
+        <img src="assets/images/autocross-at-budh.HEIC" alt="Autocross" class="w-full object-cover">
+        <div class="p-4">
+          <h3 class="font-semibold">Go-Kart & Shop Work</h3>
+          <p class="text-sm text-[color:var(--muted)] mt-1">From machining to track shakedowns — keep learning by doing.</p>
+          <video controls preload="metadata" class="w-full mt-3">
+            <source src="assets/videos/at-machine-shop-building-go-kart.MOV" type="video/mp4">
+          </video>
+        </div>
+      </article>
+    </div>
+  </section>
 
-      <details class="card p-4"><summary class="cursor-pointer font-semibold">2023 — Coding & Motorsport</summary>
-        <p class="mt-2 text-slate-300">Self-taught programming; Autocross at BIC — 2nd place.</p>
-        <img src="assets/autocross.jpg" alt="Autocross" class="mt-3 rounded shade max-w-md">
-      </details>
+  <!-- ACTIVISM -->
+  <section id="activism" class="wrap py-10">
+    <h2 class="text-2xl font-bold mb-4">Climate Activism</h2>
+    <p class="text-[color:var(--muted)]">
+      Co-organized Delhi-NCR climate strikes (2018). Called air pollution a “millennial cancer.” Coverage by national outlets.
+    </p>
+    <div class="flex flex-wrap gap-4 mt-4">
+      <a href="https://www.indiatoday.in/mail-today/story/students-in-delhi-ncr-join-climate-change-stir-1479304-2019-03-16" target="_blank" rel="noopener"
+         class="card px-4 py-2">India Today</a>
+      <a href="https://timesofindia.indiatimes.com/city/gurgaon/hundreds-of-ncr-school-students-join-global-protest-to-halt-climate-breakdown/articleshow/68434003.cms" target="_blank" rel="noopener"
+         class="card px-4 py-2">Times of India</a>
+      <a href="https://www.hindustantimes.com/gurgaon/mar-13-500-students-to-protest-inaction-on-climate-crisis-/story-5VY5elJRzTJV4VOuAwm6CP.html" target="_blank" rel="noopener"
+         class="card px-4 py-2">Hindustan Times</a>
+    </div>
+  </section>
 
-      <details class="card p-4"><summary class="cursor-pointer font-semibold">2024 — Lexus GS300 (2JZ) Rebuild</summary>
-        <p class="mt-2 text-slate-300">OEM+ restoration—rubber, sensors, lines; stock-fresh drivability.</p>
-        <img src="assets/projects/gs300.jpg" alt="GS300 2JZ build" class="mt-3 rounded shade max-w-md">
+  <!-- TIMELINE (collapsible) -->
+  <section id="timeline" class="wrap py-10">
+    <h2 class="text-2xl font-bold mb-6">Life & Impact Timeline</h2>
+    <div class="space-y-3">
+      <details class="card p-4"><summary class="font-semibold">2013 — Early Engineering Curiosity</summary>
+        <p class="text-[color:var(--muted)] mt-2">Reverse-engineering, workshop tinkering, learning by breaking & fixing.</p>
       </details>
-
-      <details class="card p-4"><summary class="cursor-pointer font-semibold">2025 — UNO Minda Internship</summary>
-        <p class="mt-2 text-slate-300">Product Integration & Market Analysis—bridging engineering with business outcomes.</p>
-        <img src="assets/unominda.png" alt="UNO Minda" class="mt-3 rounded shade h-16 bg-white p-3">
+      <details class="card p-4" open><summary class="font-semibold">2016 — CAD Modelling</summary>
+        <p class="text-[color:var(--muted)] mt-2">Parametric 3D models, fitment checks, stress-aware design.</p>
+        <img class="mt-3 rounded" src="assets/images/3d-printing-%28cad%29-pt2.jpg" alt="CAD work">
+      </details>
+      <details class="card p-4"><summary class="font-semibold">2018 — Climate Activism</summary>
+        <p class="text-[color:var(--muted)] mt-2">Delhi-NCR strikes; national coverage. “Millennial cancer.”</p>
+      </details>
+      <details class="card p-4"><summary class="font-semibold">2019 — Aeromodelling Builds</summary>
+        <img class="mt-3 rounded" src="assets/images/aeromodelling.jpg" alt="Aeromodelling">
+      </details>
+      <details class="card p-4"><summary class="font-semibold">2020 — Workshop Innovation</summary>
+        <video class="mt-3 w-full rounded" controls preload="metadata">
+          <source src="assets/videos/a-video-of-me-in-my-workshop-at-16%21.mp4" type="video/mp4">
+        </video>
+      </details>
+      <details class="card p-4"><summary class="font-semibold">2023 — Coding & Motorsport</summary>
+        <p class="text-[color:var(--muted)] mt-2">Self-taught programming for automation & control. Autocross at BIC — 2nd place.</p>
+        <img class="mt-3 rounded" src="assets/images/racing-ritz-autocross-at-budh.JPG" alt="Autocross at BIC">
+      </details>
+      <details class="card p-4"><summary class="font-semibold">2024 — Lexus GS300 (2JZ) Rebuild</summary>
+        <img class="mt-3 rounded" src="assets/images/lexus-gs300-licnese-plates.JPG" alt="Lexus GS300">
+      </details>
+      <details class="card p-4"><summary class="font-semibold">2025 — UNO Minda Internship</summary>
+        <p class="text-[color:var(--muted)] mt-2">Product Integration & Market Analysis — connecting engineering to the market.</p>
       </details>
     </div>
   </section>
 
-  <!-- ===== Contact ===== -->
-  <section id="contact" class="maxw mx-auto px-4 py-12">
-    <h2 class="section-title font-semibold mb-4">Contact</h2>
-    <div class="card p-6">
-      <p class="text-slate-300">Open to racing opportunities, technical collaborations, and sponsorships.</p>
-      <div class="mt-3 grid sm:grid-cols-2 gap-4">
-        <p><b>Email:</b> <a class="underline" href="mailto:aryadharg@gmail.com">aryadharg@gmail.com</a></p>
-        <p><b>Phone:</b> <a class="underline" href="tel:+919560082697">+91 95600 82697</a></p>
-        <p><b>GitHub:</b> <a class="underline" target="_blank" rel="noopener" href="https://github.com/aryadharg-max">@aryadharg-max</a></p>
-        <p><b>LinkedIn:</b> <a class="underline" target="_blank" rel="noopener" href="#">Add link</a></p>
+  <!-- CONTACT -->
+  <section id="contact" class="wrap py-12">
+    <h2 class="text-2xl font-bold mb-4">Contact</h2>
+    <div class="grid sm:grid-cols-2 gap-4">
+      <div class="card p-4">
+        <p><strong>Email:</strong> <a href="mailto:aryadharg@gmail.com">aryadharg@gmail.com</a></p>
+        <p class="mt-2"><strong>Phone:</strong> <a href="tel:+919560082697">+91 95600 82697</a></p>
+        <p class="mt-2"><strong>Instagram:</strong> <a href="https://instagram.com/aryadhar" target="_blank" rel="noopener">@aryadhar</a></p>
+        <p class="mt-2"><strong>GitHub:</strong> <a href="https://github.com/aryadharg-max" target="_blank" rel="noopener">@aryadharg-max</a></p>
+      </div>
+      <div class="card p-4">
+        <p class="text-[color:var(--muted)]">Open to racing opportunities, technical collaborations, and sponsorships. Share a bit of context and timeline — I’ll reply with a plan.</p>
       </div>
     </div>
   </section>
 
-  <!-- ===== Footer ===== -->
-  <footer class="mt-10 border-t border-white/10">
-    <div class="maxw mx-auto px-4 py-6 text-sm text-slate-400">
-      © <span id="y"></span> Aryadhar Gupta — Built for clarity & speed • <a href="#" class="underline">Back to top</a>
-    </div>
+  <footer class="wrap py-8 border-t border-white/10 text-sm text-[color:var(--muted)]">
+    © <span id="year"></span> Aryadhar Gupta — Built on GitHub Pages.
   </footer>
 
-  <!-- ===== Scripts ===== -->
   <script>
     // Year
-    document.getElementById('y').textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Smooth-scroll (header links work natively with CSS smooth, this is just focus polish)
-    document.querySelectorAll('a[href^="#"]').forEach(a=>{
-      a.addEventListener('click', e=>{
-        const id=a.getAttribute('href').slice(1);
-        const el=document.getElementById(id);
-        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); el.setAttribute('tabindex','-1'); el.focus({preventScroll:true}); }
-      });
-    });
-
-    // About carousel (auto + dots)
+    // Simple auto-carousel for About
     const slides = document.querySelectorAll('#aboutCarousel .slide');
-    const dots = document.querySelectorAll('#aboutCarousel .dot');
     let idx = 0;
-    function show(i){
+    setInterval(() => {
       slides[idx].classList.remove('active');
-      dots[idx].classList.remove('bg-cyan-300');
-      dots[idx].classList.add('bg-white/40');
-      idx = i;
+      idx = (idx + 1) % slides.length;
       slides[idx].classList.add('active');
-      dots[idx].classList.add('bg-cyan-300');
-      dots[idx].classList.remove('bg-white/40');
-    }
-    dots.forEach((d,i)=> d.addEventListener('click',()=>show(i)));
-    setInterval(()=> show((idx+1)%slides.length), 4500);
-
-    // Expandable examples toggles
-    function toggle(id){
-      const el=document.getElementById(id);
-      if(!el) return;
-      el.classList.toggle('hidden');
-    }
-    window.toggleExamples = toggle; // expose for inline onclick
+    }, 4000);
   </script>
 </body>
 </html>
-
